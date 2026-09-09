@@ -6,58 +6,32 @@
   <title>Felimiau | Tienda Especializada para Felinos</title>
 
   <!-- ================================================================= -->
-  <!-- PASO 1: ENLACE A BOOTSTRAP 5.3 (CSS)                              -->
+  <!-- PASO 1: ENLACE OFICIAL A BOOTSTRAP 5.3 (CSS VÍA CDN)              -->
   <!-- ================================================================= -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
   <!-- Estilos visuales personalizados -->
   <style>
-    /* Estilos del carrusel para que las fotos se vean completas y nunca se corten */
+    /* Ajuste de carrusel: Fondo oscuro y object-fit contain para que las fotos NUNCA se corten */
     .carousel-item {
+      background-color: #18181b;
       height: 480px;
-      background: radial-gradient(circle, #27272a 0%, #18181b 100%);
       text-align: center;
     }
     .carousel-item img {
       height: 480px;
-      max-height: 480px;
       width: auto !important;
       max-width: 100%;
       object-fit: contain;
       margin: 0 auto;
-      display: block;
       filter: brightness(0.95);
     }
-    .carousel-caption {
-      bottom: 20px;
-      background: rgba(15, 23, 42, 0.80);
-      backdrop-filter: blur(6px);
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 10px 20px;
-    }
-    @media (max-width: 768px) {
-      .carousel-item,
-      .carousel-item img {
-        height: 320px;
-      }
-      .carousel-caption {
-        bottom: 10px;
-        padding: 6px 12px;
-      }
-      .carousel-caption h2 {
-        font-size: 1.1rem;
-      }
-      .carousel-caption p {
-        font-size: 0.85rem;
-      }
-    }
-    /* Altura fija para las fotos de los productos */
+    /* Altura consistente para las fotos del catálogo de productos */
     .card-img-top {
-      height: 220px;
+      height: 230px;
       object-fit: cover;
     }
-    /* Efecto para que la tarjeta se eleve un poco al pasar el mouse */
+    /* Efecto interactivo suave al pasar el mouse por las tarjetas */
     .card {
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
@@ -70,23 +44,23 @@
 <body class="d-flex flex-column min-vh-100 bg-light">
 
   <!-- ================================================================= -->
-  <!-- PASO 2: BARRA DE NAVEGACIÓN (NAVBAR RESPONSIVA)                   -->
-  <!-- En celular se achica y muestra el botón de 3 rayitas (hamburguesa)-->
+  <!-- PASO 2: BARRA DE NAVEGACIÓN (NAVBAR RESPONSIVA CON BOTÓN MÓVIL)   -->
+  <!-- En celular se colapsa automáticamente mostrando botón hamburguesa -->
   <!-- ================================================================= -->
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
       <div class="container">
-        <!-- Nombre de la tienda -->
+        <!-- Logotipo / Nombre de la Marca -->
         <a class="navbar-brand fw-bold text-warning fs-3" href="#">
           🐱 Felimiau
         </a>
 
-        <!-- Botón hamburguesa (se ve solo en celulares) -->
+        <!-- Botón Toggler para dispositivos móviles -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir menú">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- Menú que se oculta en celular y se despliega al tocar el botón -->
+        <!-- Enlaces colapsables -->
         <div class="collapse navbar-collapse" id="menuPrincipal">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
@@ -98,7 +72,7 @@
             <li class="nav-item">
               <a class="nav-link" href="#servicios">Servicios</a>
             </li>
-            <!-- Menú desplegable con opciones -->
+            <!-- Menú Desplegable (Dropdown) -->
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="menuCategorias" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Categorías
@@ -116,10 +90,10 @@
             </li>
           </ul>
 
-          <!-- Buscador de productos a la derecha -->
+          <!-- Formulario de búsqueda rápida -->
           <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Buscar para tu gato..." aria-label="Buscar">
-            <button class="btn btn-warning text-dark fw-semibold" type="submit">Buscar</button>
+            <button class="btn btn-warning text-dark fw-bold" type="submit">Buscar</button>
           </form>
         </div>
       </div>
@@ -127,49 +101,52 @@
   </header>
 
   <!-- ================================================================= -->
-  <!-- 3. CARRUSEL DE IMÁGENES (TRANSICIÓN AUTOMÁTICA CADA 3 SEGUNDOS)   -->
+  <!-- PASO 3: CARRUSEL DE FOTOS (ROTACIÓN AUTOMÁTICA CADA 3 SEGUNDOS)   -->
+  <!-- data-bs-interval="3000" = tiempo de 3 segundos exactos            -->
   <!-- ================================================================= -->
-  <section id="inicio" aria-label="Carrusel de promociones Felimiau">
+  <section id="inicio" aria-label="Promociones destacadas">
     <div id="carruselFelimiau" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
       
       <!-- Indicadores de posición inferiores -->
       <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carruselFelimiau" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Diapositiva 1"></button>
-        <button type="button" data-bs-target="#carruselFelimiau" data-bs-slide-to="1" aria-label="Diapositiva 2"></button>
-        <button type="button" data-bs-target="#carruselFelimiau" data-bs-slide-to="2" aria-label="Diapositiva 3"></button>
+        <button type="button" data-bs-target="#carruselFelimiau" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Foto 1"></button>
+        <button type="button" data-bs-target="#carruselFelimiau" data-bs-slide-to="1" aria-label="Foto 2"></button>
+        <button type="button" data-bs-target="#carruselFelimiau" data-bs-slide-to="2" aria-label="Foto 3"></button>
       </div>
 
-      <!-- Diapositivas con Imágenes y Textos Promocionales -->
+      <!-- Diapositivas con fotos completas sin cortes -->
       <div class="carousel-inner">
-        <!-- Diapositiva 1: Gatito blanco en rascador/torre -->
+        
+        <!-- Diapositiva 1: Blanquito en Torre -->
         <div class="carousel-item active" data-bs-interval="3000">
-          <img src="WhatsApp Image 2026-09-07 at 23.02.56.jpeg" class="d-block w-100" alt="Gatito blanco de ojos azules en su torre rascadora">
+          <img src="blanquito.jpg" class="d-block" alt="Blanquito descansando en su rascador">
           <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-3">
             <h2 class="fw-bold text-warning">¡Bienvenidos a Felimiau! 🐾</h2>
-            <p class="lead mb-0">La tienda especializada donde encuentras todo lo que tu michi ama y necesita.</p>
+            <p class="lead mb-0">Blanquito te da la bienvenida a nuestra tienda especializada en gatos.</p>
           </div>
         </div>
 
-        <!-- Diapositiva 2: Gata calicó en camita -->
+        <!-- Diapositiva 2: Talia Acurrucada -->
         <div class="carousel-item" data-bs-interval="3000">
-          <img src="WhatsApp Image 2026-09-07 at 23.04.18.jpeg" class="d-block w-100" alt="Gatita calicó descansando plácidamente en su cama">
+          <img src="talia.jpg" class="d-block" alt="Talia descansando cómoda en su cama">
           <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-3">
-            <h2 class="fw-bold text-warning">Camas & Máximo Confort 😴</h2>
-            <p class="lead mb-0">El descanso térmico y acogedor que tu consentido de cuatro patas se merece.</p>
+            <h2 class="fw-bold text-warning">Camas Térmicas con Talia 🧶</h2>
+            <p class="lead mb-0">Espacios suaves y antiestrés aprobados por Talia para sus mejores siestas.</p>
           </div>
         </div>
 
-        <!-- Diapositiva 3: Rascadores, torres y diversión -->
+        <!-- Diapositiva 3: Rascadores y Nutrición -->
         <div class="carousel-item" data-bs-interval="3000">
-          <img src="https://images.unsplash.com/photo-1548802673-380ab8ebc7b7?auto=format&fit=crop&w=1200&h=450&q=80" class="d-block w-100" alt="Gatos jugando en rascador">
+          <img src="https://images.unsplash.com/photo-1548802673-380ab8ebc7b7?auto=format&fit=crop&w=1200&h=450&q=80" class="d-block" alt="Gatos jugando felices">
           <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-75 rounded p-3">
-            <h2 class="fw-bold text-warning">Rascadores, Torres & Diversión 🧶</h2>
-            <p class="lead mb-0">Diseños resistentes y acogedores para el juego, ejercicio y siestas de reyes.</p>
+            <h2 class="fw-bold text-warning">Rascadores, Torres & Nutrición Premium 🐟</h2>
+            <p class="lead mb-0">Los mejores alimentos y juguetes interactivos al mejor precio.</p>
           </div>
         </div>
+
       </div>
 
-      <!-- Controles de navegación Anterior y Siguiente -->
+      <!-- Controles para avanzar o retroceder -->
       <button class="carousel-control-prev" type="button" data-bs-target="#carruselFelimiau" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Anterior</span>
@@ -182,159 +159,146 @@
   </section>
 
   <!-- ================================================================= -->
-  <!-- 4. CONTENIDO PRINCIPAL: CATÁLOGO EN GRID Y TARJETAS (CARDS)       -->
+  <!-- PASO 4: CATÁLOGO EN GRID RESPONSIVO CON TARJETAS (CARDS)          -->
+  <!-- - col-12: Móvil (1 por fila, 100% ancho)                          -->
+  <!-- - col-md-6: Tablet (2 por fila, 50% ancho)                        -->
+  <!-- - col-lg-4: Computadora (3 por fila, 33.3% ancho)                 -->
+  <!-- Cada tarjeta va en un elemento semántico <article>                -->
   <!-- ================================================================= -->
   <main class="container my-5 flex-grow-1">
 
-    <!-- Encabezado de la Sección de Productos -->
-    <section class="text-center py-3 mb-5">
-      <h1 class="display-5 fw-bold text-dark">Productos Favoritos de los Felinos</h1>
-      <p class="col-lg-8 mx-auto lead text-muted">
-        Descubre nuestros productos destacados.
-      </p>
+    <!-- Título de la sección -->
+    <section class="text-center py-3 mb-4">
+      <h1 class="display-5 fw-bold text-dark">Nuestros Productos Destacados</h1>
+      <p class="lead text-muted">Descubre la variedad de productos que tenemos para tus felinos.</p>
       <hr class="w-25 mx-auto text-warning border-3 opacity-100">
     </section>
 
-    <!-- Catálogo en Cuadrícula Responsiva: 1 col en móviles, 2 en tablets, 3 en escritorio -->
-    <section id="productos" aria-label="Catálogo de productos Felimiau">
-      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <!-- Fila contenedora de los productos -->
+    <section id="productos" class="row g-4" aria-label="Catálogo de productos">
 
-        <!-- Tarjeta 1: Alimento Premium -->
-        <div class="col">
-          <div class="card h-100 shadow-sm border-0">
-            <img src="https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&w=600&h=350&q=80" class="card-img-top" alt="Plato con alimento seco para gatos">
-            <div class="card-body d-flex flex-column">
-              <span class="badge bg-warning text-dark align-self-start mb-2">Nutrición Premium</span>
-              <h5 class="card-title fw-bold text-dark">Alimento Felino Salmón & Arroz (3kg)</h5>
-              <p class="card-text text-muted flex-grow-1">
-                Fórmula balanceada rica en Omega 3 y 6 para un pelaje brillante, control de bolas de pelo y salud renal óptima.
-              </p>
-              <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
-                <span class="h5 text-primary fw-bold mb-0">$22.990</span>
-                <a href="#" class="btn btn-warning text-dark fw-bold">Agregar al Carrito</a>
-              </div>
-            </div>
+      <!-- Producto 1: Alimento -->
+      <article class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm border-0">
+          <img src="https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&w=600&h=350&q=80" class="card-img-top" alt="Alimento seco para gatos">
+          <div class="card-body d-flex flex-column">
+            <span class="badge bg-warning text-dark align-self-start mb-2">Nutrición Premium</span>
+            <h5 class="card-title fw-bold text-dark">Alimento Salmón & Arroz (3kg)</h5>
+            <p class="card-text text-muted flex-grow-1">
+              Rico en Omega 3 para un pelaje brillante y salud digestiva óptima.
+            </p>
+            <p class="card-text h5 text-primary fw-bold mb-3">Precio: $22.990</p>
+            <a href="#" class="btn btn-warning text-dark fw-bold mt-auto">Ver producto</a>
           </div>
         </div>
+      </article>
 
-        <!-- Tarjeta 2: Rascador Castillo -->
-        <div class="col">
-          <div class="card h-100 shadow-sm border-0">
-            <img src="https://images.unsplash.com/photo-1545249390-6bdfa286032f?auto=format&fit=crop&w=600&h=350&q=80" class="card-img-top" alt="Torre y rascador para gatos con plataformas">
-            <div class="card-body d-flex flex-column">
-              <span class="badge bg-success align-self-start mb-2">Más Vendido</span>
-              <h5 class="card-title fw-bold text-dark">Rascador Torre Castillo 3 Niveles</h5>
-              <p class="card-text text-muted flex-grow-1">
-                Estructura reforzada con postes de sisal natural, cueva de descanso, hamaca suave y pelotitas con cascabel.
-              </p>
-              <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
-                <span class="h5 text-primary fw-bold mb-0">$39.990</span>
-                <a href="#" class="btn btn-warning text-dark fw-bold">Agregar al Carrito</a>
-              </div>
-            </div>
+      <!-- Producto 2: Rascador Castillo -->
+      <article class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm border-0">
+          <img src="rascador.png" class="card-img-top" alt="Rascador Torre Castillo 3 Niveles">
+          <div class="card-body d-flex flex-column">
+            <span class="badge bg-success align-self-start mb-2">Más Vendido</span>
+            <h5 class="card-title fw-bold text-dark">Rascador Castillo 3 Niveles</h5>
+            <p class="card-text text-muted flex-grow-1">
+              Madera natural con cápsula transparente, cueva felina y pompón colgante.
+            </p>
+            <p class="card-text h5 text-primary fw-bold mb-3">Precio: $39.990</p>
+            <a href="#" class="btn btn-warning text-dark fw-bold mt-auto">Ver producto</a>
           </div>
         </div>
+      </article>
 
-        <!-- Tarjeta 3: Snacks Churu -->
-        <div class="col">
-          <div class="card h-100 shadow-sm border-0">
-            <img src="https://images.unsplash.com/photo-1561948955-570b270e7c36?auto=format&fit=crop&w=600&h=350&q=80" class="card-img-top" alt="Gato disfrutando de un snack">
-            <div class="card-body d-flex flex-column">
-              <span class="badge bg-danger align-self-start mb-2">Favorito de Michis</span>
-              <h5 class="card-title fw-bold text-dark">Pack Snacks Churu Variados (x20 tubos)</h5>
-              <p class="card-text text-muted flex-grow-1">
-                Puré cremoso irresistible de atún, pollo y salmón. Libre de conservantes artificiales y con alta hidratación.
-              </p>
-              <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
-                <span class="h5 text-primary fw-bold mb-0">$14.990</span>
-                <a href="#" class="btn btn-warning text-dark fw-bold">Agregar al Carrito</a>
-              </div>
-            </div>
+      <!-- Producto 3: Snacks Churu -->
+      <article class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm border-0">
+          <img src="https://images.unsplash.com/photo-1561948955-570b270e7c36?auto=format&fit=crop&w=600&h=350&q=80" class="card-img-top" alt="Gatito comiendo snack">
+          <div class="card-body d-flex flex-column">
+            <span class="badge bg-danger align-self-start mb-2">Favorito Michis</span>
+            <h5 class="card-title fw-bold text-dark">Pack Snacks Churu (x20 tubos)</h5>
+            <p class="card-text text-muted flex-grow-1">
+              Puré cremoso irresistible de atún y salmón. Alta hidratación sin químicos.
+            </p>
+            <p class="card-text h5 text-primary fw-bold mb-3">Precio: $14.990</p>
+            <a href="#" class="btn btn-warning text-dark fw-bold mt-auto">Ver producto</a>
           </div>
         </div>
+      </article>
 
-        <!-- Tarjeta 4: Cama Cueva Afelpada -->
-        <div class="col">
-          <div class="card h-100 shadow-sm border-0">
-            <img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=600&h=350&q=80" class="card-img-top" alt="Gatito durmiendo plácidamente en cama suave">
-            <div class="card-body d-flex flex-column">
-              <span class="badge bg-info text-dark align-self-start mb-2">Confort Térmico</span>
-              <h5 class="card-title fw-bold text-dark">Cama Cueva Antiestrés Ultra Suave</h5>
-              <p class="card-text text-muted flex-grow-1">
-                Diseño acolchado con efecto térmico que brinda seguridad, reduce la ansiedad y asegura siestas profundas.
-              </p>
-              <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
-                <span class="h5 text-primary fw-bold mb-0">$18.990</span>
-                <a href="#" class="btn btn-warning text-dark fw-bold">Agregar al Carrito</a>
-              </div>
-            </div>
+      <!-- Producto 4: Cama Cueva -->
+      <article class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm border-0">
+          <img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=600&h=350&q=80" class="card-img-top" alt="Gato durmiendo en cama suave">
+          <div class="card-body d-flex flex-column">
+            <span class="badge bg-info text-dark align-self-start mb-2">Confort Térmico</span>
+            <h5 class="card-title fw-bold text-dark">Cama Cueva Antiestrés Suave</h5>
+            <p class="card-text text-muted flex-grow-1">
+              Diseño acolchado con efecto térmico que reduce el estrés y da seguridad.
+            </p>
+            <p class="card-text h5 text-primary fw-bold mb-3">Precio: $18.990</p>
+            <a href="#" class="btn btn-warning text-dark fw-bold mt-auto">Ver producto</a>
           </div>
         </div>
+      </article>
 
-        <!-- Tarjeta 5: Fuente de Agua Automática -->
-        <div class="col">
-          <div class="card h-100 shadow-sm border-0">
-            <img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?auto=format&fit=crop&w=600&h=350&q=80" class="card-img-top" alt="Gato tomando agua fresca">
-            <div class="card-body d-flex flex-column">
-              <span class="badge bg-primary align-self-start mb-2">Salud Renal</span>
-              <h5 class="card-title fw-bold text-dark">Fuente de Agua Cascada LED 2.5L</h5>
-              <p class="card-text text-muted flex-grow-1">
-                Agua en constante movimiento con triple filtro de carbón activado, motor ultra silencioso y luz nocturna.
-              </p>
-              <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
-                <span class="h5 text-primary fw-bold mb-0">$19.990</span>
-                <a href="#" class="btn btn-warning text-dark fw-bold">Agregar al Carrito</a>
-              </div>
-            </div>
+      <!-- Producto 5: Fuente de Agua -->
+      <article class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm border-0">
+          <img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?auto=format&fit=crop&w=600&h=350&q=80" class="card-img-top" alt="Gato tomando agua">
+          <div class="card-body d-flex flex-column">
+            <span class="badge bg-primary align-self-start mb-2">Salud Renal</span>
+            <h5 class="card-title fw-bold text-dark">Fuente de Agua Cascada 2.5L</h5>
+            <p class="card-text text-muted flex-grow-1">
+              Agua en constante movimiento con triple filtro de carbón y luz LED.
+            </p>
+            <p class="card-text h5 text-primary fw-bold mb-3">Precio: $19.990</p>
+            <a href="#" class="btn btn-warning text-dark fw-bold mt-auto">Ver producto</a>
           </div>
         </div>
+      </article>
 
-        <!-- Tarjeta 6: Arena Sanitaria -->
-        <div class="col">
-          <div class="card h-100 shadow-sm border-0">
-            <img src="https://images.unsplash.com/photo-1574158622682-e40e69881006?auto=format&fit=crop&w=600&h=350&q=80" class="card-img-top" alt="Gato blanco limpio y aseado">
-            <div class="card-body d-flex flex-column">
-              <span class="badge bg-secondary align-self-start mb-2">Higiene & Aseo</span>
-              <h5 class="card-title fw-bold text-dark">Arena Aglomerante Libre de Polvo 10kg</h5>
-              <p class="card-text text-muted flex-grow-1">
-                Bentonita natural de máxima absorción que neutraliza olores al instante con suave aroma a lavanda.
-              </p>
-              <div class="d-flex justify-content-between align-items-center mt-3 pt-2 border-top">
-                <span class="h5 text-primary fw-bold mb-0">$11.990</span>
-                <a href="#" class="btn btn-warning text-dark fw-bold">Agregar al Carrito</a>
-              </div>
-            </div>
+      <!-- Producto 6: Arena Sanitaria -->
+      <article class="col-12 col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm border-0">
+          <img src="https://images.unsplash.com/photo-1513360309081-38f076278f1e?auto=format&fit=crop&w=600&h=350&q=80" class="card-img-top" alt="Gato aseado y limpio">
+          <div class="card-body d-flex flex-column">
+            <span class="badge bg-secondary align-self-start mb-2">Higiene & Aseo</span>
+            <h5 class="card-title fw-bold text-dark">Arena Aglomerante Lavanda 10kg</h5>
+            <p class="card-text text-muted flex-grow-1">
+              Bentonita natural que neutraliza olores al instante y rinde el doble.
+            </p>
+            <p class="card-text h5 text-primary fw-bold mb-3">Precio: $11.990</p>
+            <a href="#" class="btn btn-warning text-dark fw-bold mt-auto">Ver producto</a>
           </div>
         </div>
+      </article>
 
-      </div>
     </section>
 
     <!-- ================================================================= -->
-    <!-- 5. SECCIÓN GRID INFORMATIVA (BENEFICIOS Y SERVICIOS)              -->
+    <!-- PASO 5: BENEFICIOS (3 COLUMNAS RESPONSIVAS)                       -->
     <!-- ================================================================= -->
-    <section id="servicios" class="my-5 py-4" aria-label="Servicios y garantías de Felimiau">
+    <section id="servicios" class="my-5 py-4" aria-label="Servicios Felimiau">
       <div class="row text-center g-4">
         <div class="col-12 col-md-4">
           <div class="p-4 bg-white rounded-3 shadow-sm h-100 border-top border-warning border-4">
-            <div class="display-6 mb-3"></div>
-            <h4 class="fw-bold text-dark">Envío FeliMiau
-            </h4>
-            <p class="text-muted mb-0">Despacho garantizado en 24 a 48 horas a todo Chile con empaque 100% seguro.</p>
+            <div class="display-6 mb-2">🚀</div>
+            <h4 class="fw-bold text-dark">Envío Michi-Express</h4>
+            <p class="text-muted mb-0">Despacho garantizado en 24 a 48 horas a todo Chile.</p>
           </div>
         </div>
         <div class="col-12 col-md-4">
           <div class="p-4 bg-white rounded-3 shadow-sm h-100 border-top border-warning border-4">
-            <div class="display-6 mb-3">🩺</div>
-            <h4 class="fw-bold text-dark">Calidad Felina Certificada</h4>
-            <p class="text-muted mb-0">Todos nuestros alimentos y juguetes están testeados y aprobados por veterinarios.</p>
+            <div class="display-6 mb-2">🩺</div>
+            <h4 class="fw-bold text-dark">Calidad Garantizada</h4>
+            <p class="text-muted mb-0">Productos aprobados y recomendados por veterinarios.</p>
           </div>
         </div>
         <div class="col-12 col-md-4">
           <div class="p-4 bg-white rounded-3 shadow-sm h-100 border-top border-warning border-4">
-            <div class="display-6 mb-3">💳</div>
+            <div class="display-6 mb-2">💳</div>
             <h4 class="fw-bold text-dark">Compra 100% Segura</h4>
-            <p class="text-muted mb-0">Paga con Webpay, tarjetas de crédito o débito.</p>
+            <p class="text-muted mb-0">Paga protegido con Webpay, tarjetas de crédito o débito.</p>
           </div>
         </div>
       </div>
@@ -343,16 +307,15 @@
   </main>
 
   <!-- ================================================================= -->
-  <!-- 6. PIE DE PÁGINA (FOOTER RESPONSIVO CON INFORMACIÓN DE LA TIENDA) -->
+  <!-- PASO 6: PIE DE PÁGINA (FOOTER RESPONSIVO)                         -->
   <!-- ================================================================= -->
   <footer id="contacto" class="bg-dark text-white py-4 mt-auto border-top border-warning border-3">
     <div class="container">
       <div class="row align-items-center">
-        <!-- Columna Izquierda: Logo y descripción -->
         <div class="col-12 col-md-6 text-center text-md-start mb-3 mb-md-0">
           <h5 class="fw-bold text-warning mb-1">🐱 Felimiau - Especialistas en Gatos</h5>
+          <p class="small text-white-50 mb-0">Desarrollo Frontend I (PFY2201) - Semana 4: Diseño Responsivo con Bootstrap 5</p>
         </div>
-        <!-- Columna Derecha: Copyright -->
         <div class="col-12 col-md-6 text-center text-md-end">
           <p class="mb-0 text-white">&copy; 2026 Felimiau. Todos los derechos reservados.</p>
           <small class="text-white-50">Desarrollado por Carolina Delgado</small>
@@ -362,7 +325,7 @@
   </footer>
 
   <!-- ================================================================= -->
-  <!-- 7. VINCULACIÓN OFICIAL DE BOOTSTRAP 5.3 JS BUNDLE (CON POPPER)    -->
+  <!-- PASO 7: SCRIPTS DE BOOTSTRAP (JAVASCRIPT BUNDLE CON POPPER)       -->
   <!-- ================================================================= -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
