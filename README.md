@@ -65,6 +65,5 @@ PFY2201_Bootstrap_Semana4/
 
 ## 👤 Información de Entrega
 * **Estudiante:** Carolina Delgado
-* **Docente:** Patricio Oliva
 * **Carrera:** Analista Programador Computacional
 * **Fecha:** Septiembre 2026
